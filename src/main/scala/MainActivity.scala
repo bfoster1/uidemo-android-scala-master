@@ -1,16 +1,11 @@
 package edu.luc.etl.cs313.scala.uidemo
 
-import java.util.Random
-
 import android.app.Activity
 import android.graphics.Color
 import android.os.{AsyncTask, Bundle}
-import android.view.{View, Menu, MenuItem}
-import android.widget.{Button, TextView}
+import edu.luc.etl.cs313.scala.uidemo.controller.{Controller, DotGenerator}
+import edu.luc.etl.cs313.scala.uidemo.model.Dots
 
-
-import model._
-import controller._
 
 /** Main activity for Android UI demo program. Responsible for Android lifecycle. */
 class MainActivity extends Activity with TypedActivity with Controller {
