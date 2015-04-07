@@ -1,7 +1,7 @@
 package edu.luc.etl.cs313.scala.uidemo
 package view
 
-import android.content.Context
+import android.content.{Context, }
 import android.graphics.{Canvas, Color, Paint}
 import android.graphics.Paint.Style
 import android.util.AttributeSet
@@ -65,4 +65,9 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
       canvas.drawCircle(dot.x, dot.y, dot.diameter, paint)
     }
   }
+
+  class Paint {
+
+  }
+
 }

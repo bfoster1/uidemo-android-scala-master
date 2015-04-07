@@ -52,30 +52,33 @@ class Dots {
     notifyListener()
   }
 
-  //REMOVING MONSTERS
+  /**REMOVING MONSTERS one at a time ;
+   * coordinates are determined */
   def removeSingleMonster(x:Float, y:Float, diameter:Int)
   {
-    for (monster <- dots)
+    for (monster <- dots) //each monster in monsters get coord.
     {
         if(  monster.x > x - diameter && monster.x < x + diameter && monster.y > y - diameter && monster.y < y + diameter && monster.vulnerability >= 1)
-            dots -= monster;
+            dots -= monster; //remove a monster
 
     }
     notifyListener()
   }
 
 
-  //monsters change color based on vulnerability
+  /**monsters change color based on vulnerability
+    * toggles a given monster's color based on vuln. state
+    * vulnerable = cyan ; not vulnerable = red*/
   def colorSwitch{
         for (monster <- dots)
         {
             if(monster.vulnerability > 0 &&  monster.color == Color.RED) {
-              monster.color == Color.CYAN
+              monster.color == Color.CYAN // not vulnerable turn cyan
             }
 
               else {
 
-                  monster.color == Color.RED
+                  monster.color == Color.RED // vulnerable turn red
 
             }
 
@@ -84,16 +87,18 @@ class Dots {
     notifyListener()
   }
 
-  //random display of monsters
+  /**random display of monsters on the screen;
+    * k monsters
+    * appear at random coordinates of grid*/
 
   def randomMonsters (ranMonster: Float){
 
     for (monsters <- dots) {
-      var display = Random.nextInt(5) + 1;
+      var display = Random.nextInt(4) + 1;
       if (Random.nextFloat() < ranMonster && monsters.vulnerability == 0 ){
 
 
-            monsters.vulnerability = display;
+            monsters.vulnerability = display; //get monsters state; vuln. or invuln.
 
 
 
@@ -105,10 +110,11 @@ class Dots {
     notifyListener()
   }
 
-  //increase vulnerability of monster
+  /*increase vulnerability of monster as time progress to
+  create difficulty*/
  def makeMonsterVulnerable {
-      for (monster <- dots)
-        if (monster.vulnerability <=0 )
+      for (monster <- dots) //each monster in monsters determine state
+        if (monster.vulnerability <=0 ) //increase  vulnerability of red monster
               { monster.vulnerability += 1}
 
           notifyListener();
@@ -129,11 +135,6 @@ class Dots {
 
 
 
-  def totalMonsters():Int ={
-
-      dots.length
-
-  }
 
 
 

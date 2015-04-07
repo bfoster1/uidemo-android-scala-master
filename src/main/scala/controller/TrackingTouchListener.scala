@@ -1,13 +1,11 @@
 package edu.luc.etl.cs313.scala.uidemo
 package controller
 
-import android.graphics.Color
 import android.view.{MotionEvent, View}
+import edu.luc.etl.cs313.scala.uidemo.model.Dots
+import edu.luc.etl.cs313.scala.uidemo.view.DotView
 
 import scala.collection.mutable.ArrayBuffer
-
-import model.Dots
-import view.DotView
 
 /** Listen for taps. */
 class TrackingTouchListener(dots: Dots, m : DotView) extends View.OnTouchListener {
@@ -41,11 +39,12 @@ class TrackingTouchListener(dots: Dots, m : DotView) extends View.OnTouchListene
       case _ => return false
     }
 
+   //determine coordinates of monster to destroy monsters
     for (i <- tracks) {
       val idx = evt.findPointerIndex(i)
       killMonster(dots,
-        evt.getX(idx),
-        evt.getY(idx),MONSTER_DISPLAY
+        evt.getX(idx),//gets x coordinate of monster
+        evt.getY(idx),MONSTER_DISPLAY //gets y coordinate of monster
 
       )
 
@@ -54,6 +53,10 @@ class TrackingTouchListener(dots: Dots, m : DotView) extends View.OnTouchListene
     true
   }
 
+  /** instead of adding dots, we will remove monsters from screen
+  as they are killed
+   the function retrieves x and y to delete monster at that
+   coordinate */
   private def killMonster(dots: Dots, x: Float, y: Float, display: Int) =
     dots.removeSingleMonster(x, y, display)
 }
