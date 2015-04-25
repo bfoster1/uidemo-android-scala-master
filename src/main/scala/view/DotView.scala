@@ -1,7 +1,7 @@
 package edu.luc.etl.cs313.scala.uidemo
 package view
 
-
+import android.content.{Context, }
 import android.graphics.{Canvas, Color, Paint}
 import android.graphics.Paint.Style
 import android.util.AttributeSet
@@ -22,6 +22,7 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
 
   { setFocusableInTouchMode(true) }
 
+  val DOT_DIAMETER = this.MonsterDiameter;
   /** The model underlying this view. */
   private var dots: Dots = _
 
@@ -39,9 +40,10 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
     this(context, attrs, 0)
     setFocusableInTouchMode(true)
   }
+
 //change
   def MonsterDiameter : Int = math.round(this.getResources.getDisplayMetrics.xdpi/2)
-  val DOT_DIAMETER = this.MonsterDiameter;
+
   /**
    * Injects the model underlying this view.
    *
