@@ -1,13 +1,13 @@
 package edu.luc.etl.cs313.scala.uidemo
 package view
 
-import android.content.{Context, }
+import android.content.Context
 import android.graphics.{Canvas, Color, Paint}
 import android.graphics.Paint.Style
 import android.util.AttributeSet
 import android.view.View
 
-import model._
+import edu.luc.etl.cs313.scala.uidemo.model._
 
 /**
  * I see spots!
@@ -22,9 +22,8 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
 
   { setFocusableInTouchMode(true) }
 
-  val DOT_DIAMETER = this.MonsterDiameter;
   /** The model underlying this view. */
-  private var dots: Dots = _
+  private var dots:Dots = _
 
   /** @param context the rest of the application */
   def this(context: Context) = {
@@ -41,9 +40,6 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
     setFocusableInTouchMode(true)
   }
 
-//change
-  def MonsterDiameter : Int = math.round(this.getResources.getDisplayMetrics.xdpi/2)
-
   /**
    * Injects the model underlying this view.
    *
@@ -55,21 +51,16 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
   override protected def onDraw(canvas: Canvas): Unit = {
     val paint = new Paint
     paint.setStyle(Style.STROKE)
-    paint.setColor(if (hasFocus) Color.CYAN else Color.RED)
+    paint.setColor(if (hasFocus) Color.BLUE else Color.GRAY)
 
     canvas.drawRect(0, 0, getWidth - 1, getHeight - 1, paint)
 
     if (null == dots) return
 
     paint.setStyle(Style.FILL)
-    for (dot <- dots.getDots) {
+    for (dot <- dots.getDots()) {
       paint.setColor(dot.color)
       canvas.drawCircle(dot.x, dot.y, dot.diameter, paint)
     }
   }
-
-  class Paint {
-
-  }
-
 }
