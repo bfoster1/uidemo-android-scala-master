@@ -51,7 +51,7 @@ class DotView(context: Context, attrs: AttributeSet, defStyle: Int) extends View
   override protected def onDraw(canvas: Canvas): Unit = {
     val paint = new Paint
     paint.setStyle(Style.STROKE)
-    paint.setColor(if (hasFocus) Color.GREEN else Color.RED)
+    paint.setColor(if (hasFocus) Color.CYAN else Color.RED)
 
     canvas.drawRect(0, 0, getWidth - 1, getHeight - 1, paint)
 
