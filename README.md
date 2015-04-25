@@ -26,3 +26,4 @@ Please refer to the book chapter for detailed information on this example.
 Please refer to [these notes](http://lucoodevcourse.bitbucket.org/notes/scalaandroiddev.html) for details.
 # monsterMania
 # monsterMania
+# monsterMania
